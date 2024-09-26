@@ -82,14 +82,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function easyEncryptKar(val) {
         const secretKeyLayer1 = 'mumbai';
-        const secretKeyLayer2 = 'sonal';
+        const secretKeyLayer2 = 'gfname';
         const encryptedLayer1 = CryptoJS.AES.encrypt(val, secretKeyLayer1).toString();
         return CryptoJS.AES.encrypt(encryptedLayer1, secretKeyLayer2).toString();
     }
 
     function easyDecryptKar(val) {
         const secretKeyLayer1 = 'mumbai';
-        const secretKeyLayer2 = 'sonal';
+        const secretKeyLayer2 = 'gfname';
         const decryptedLayer2 = CryptoJS.AES.decrypt(val, secretKeyLayer2).toString(CryptoJS.enc.Utf8);
         return CryptoJS.AES.decrypt(decryptedLayer2, secretKeyLayer1).toString(CryptoJS.enc.Utf8);
     }
