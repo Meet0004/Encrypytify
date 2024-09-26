@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Encrypter - Decrypter</title>
+        <link id="linku" rel="stylesheet" href="style2.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jsrsasign/10.7.3/jsrsasign-all-min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/gh/cryptocoinjs/twofish@master/twofish.js"></script>
+        <script src="app2.js"></script>
+    </head>
+    <body>
+        
+        <div id="buttons">
+            <button id="encrypter" class="crypter"> EncrypTer</button>
+            <button id="decrypter" class="crypter"> DecrypTer</button>
+        </div>
+
+        <main class="kaam">
+            
+            <section class="encryption">
+                <h1 class="heading">Encryption</h1>
+                <p class="enterkey">Enter Key : </p>
+                <input type="text" placeholder="Enter Key ...." class="enteredKey" id="value_to_ecrypt">
+                
+
+                <div class="ha">
+                    <svg  id="easy-encrypt" class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="30" height="30" color="#000000" fill="none">
+                        <path d="M22 16L20 14H10.5322C9.7959 12.5183 8.26687 11.5 6.5 11.5C4.01471 11.5 2 13.5147 2 16C2 18.4852 4.01471 20.5 6.5 20.5C8.26685 20.5 9.79587 19.4817 10.5322 18H16.5L17.75 16.7073L19 18H20L22 16Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M6 16H7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M3 3.5V8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M6 7V5C6 4.17157 6.67157 3.5 7.5 3.5C8.32843 3.5 9 4.17157 9 5V7C9 7.82843 8.32843 8.5 7.5 8.5C6.67157 8.5 6 7.82843 6 7Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M12 3.5V8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M15 3.5V8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M18 7V5C18 4.17157 18.6716 3.5 19.5 3.5C20.3284 3.5 21 4.17157 21 5V7C21 7.82843 20.3284 8.5 19.5 8.5C18.6716 8.5 18 7.82843 18 7Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+
+                    <svg  id="medium-encrypt" class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="30" height="30" color="#000000" fill="none">
+                        <path d="M22 16L20 14H10.5322C9.7959 12.5183 8.26687 11.5 6.5 11.5C4.01471 11.5 2 13.5147 2 16C2 18.4852 4.01471 20.5 6.5 20.5C8.26685 20.5 9.79587 19.4817 10.5322 18H16.5L17.75 16.7073L19 18H20L22 16Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M6 16H7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M3 3.5V8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M6 7V5C6 4.17157 6.67157 3.5 7.5 3.5C8.32843 3.5 9 4.17157 9 5V7C9 7.82843 8.32843 8.5 7.5 8.5C6.67157 8.5 6 7.82843 6 7Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M12 3.5V8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M15 3.5V8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M18 7V5C18 4.17157 18.6716 3.5 19.5 3.5C20.3284 3.5 21 4.17157 21 5V7C21 7.82843 20.3284 8.5 19.5 8.5C18.6716 8.5 18 7.82843 18 7Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                    <svg  id="hard-encrypt" class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="30" height="30" color="#000000" fill="none">
+                        <path d="M22 16L20 14H10.5322C9.7959 12.5183 8.26687 11.5 6.5 11.5C4.01471 11.5 2 13.5147 2 16C2 18.4852 4.01471 20.5 6.5 20.5C8.26685 20.5 9.79587 19.4817 10.5322 18H16.5L17.75 16.7073L19 18H20L22 16Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M6 16H7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M3 3.5V8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M6 7V5C6 4.17157 6.67157 3.5 7.5 3.5C8.32843 3.5 9 4.17157 9 5V7C9 7.82843 8.32843 8.5 7.5 8.5C6.67157 8.5 6 7.82843 6 7Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M12 3.5V8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M15 3.5V8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M18 7V5C18 4.17157 18.6716 3.5 19.5 3.5C20.3284 3.5 21 4.17157 21 5V7C21 7.82843 20.3284 8.5 19.5 8.5C18.6716 8.5 18 7.82843 18 7Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                    <svg id="black-encrypt" class="black-crypt"  xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 30 30" fill="none">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M12.0001 1.25C12.0001 1.25 11.1615 1.75049 10.9435 1.866C10.5072 2.09717 9.87147 2.41236 9.08289 2.74307C7.50151 3.40629 5.32711 4.12272 2.92549 4.36079L2.25012 4.42774L2.25012 11.0482C2.25012 15.0901 4.69968 18.0067 7.02962 19.8672C8.20185 20.8033 9.37014 21.4945 10.2438 21.9515C10.6815 22.1805 12.0001 22.75 12.0001 22.75C12.0001 22.75 13.3187 22.1805 13.7564 21.9515C14.6301 21.4945 15.7984 20.8033 16.9706 19.8672C19.3006 18.0067 21.7501 15.0901 21.7501 11.0482L21.7501 4.42774L21.0747 4.36079C18.6731 4.12272 16.4987 3.40629 14.9174 2.74307C14.1288 2.41236 13.4931 2.09717 13.0568 1.866C12.8388 1.75049 12.0001 1.25 12.0001 1.25ZM9.25006 9C9.25006 7.48122 10.4813 6.25 12.0001 6.25C13.5188 6.25 14.7501 7.48122 14.7501 9V9.75H16.2501L16.2501 16.75L7.75006 16.75L7.75006 9.75H9.25006V9ZM13.2501 9V9.75L10.7501 9.75V9C10.7501 8.30964 11.3097 7.75 12.0001 7.75C12.6904 7.75 13.2501 8.30964 13.2501 9Z" fill="#141B34"/>
+                    </svg>
+                </div>
+
+                <p class="nicheheading">Encrypted Key : </p>
+                <input type="text" readonly  class="anskey" id="encrypted_key" value="">
+                
+                <button id="wanna">Wanna increase Security?</button> <br>
+
+                <svg id="sender" class="sender" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" color="#000000" fill="none">
+                    <path d="M17 7L6 18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                    <path d="M11 6.13151C11 6.13151 16.6335 5.65662 17.4885 6.51153C18.3434 7.36645 17.8684 13 17.8684 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+
+                <svg id="niche-bhej" class="sender" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" color="#000000" fill="none">
+                    <path d="M5.99994 13L5.99994 8.5C5.99994 6.01472 8.01466 4 10.4999 4C12.9852 4 14.9999 6.01472 14.9999 8.5V20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M11.9999 17C11.9999 17 14.2093 20 14.9999 20C15.7905 20 17.9999 17 17.9999 17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+
+                <svg id="eRefresh" class="refresh" xmlns="http://www.w3.org/2000/svg" width="25px" height="25px" viewBox="0 0 21 21">
+                    <g fill="none" fill-rule="evenodd" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" transform="translate(3 6)">
+                        <path d="m1.378 1.376 4.243.003v4.242" transform="matrix(-.70710678 .70710678 .70710678 .70710678 3.500179 -1.449821)"/> 
+                        <path d="m5.5 9.49998326h5c2 .00089417 3-.99910025 3-2.99998326s-1-3.00088859-3-3.00001674h-10"/> 
+                    </g>
+                </svg>
+            </section>
+
+            <section class="decryption">
+                <h1 class="heading">Decryption</h1>
+                <p class="enterkey">Enter Key : </p>
+                <input type="text" placeholder="Enter Key ...." id="value_to_decrypt"  class="anskey">
+
+                
+                <div class="ha">
+                    <svg id="easy-decrypt" class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="40" height="40" color="#000000" fill="none">
+                        <path d="M4.26781 18.8447C4.49269 20.515 5.87613 21.8235 7.55966 21.9009C8.97627 21.966 10.4153 22 12 22C13.5847 22 15.0237 21.966 16.4403 21.9009C18.1239 21.8235 19.5073 20.515 19.7322 18.8447C19.879 17.7547 20 16.6376 20 15.5C20 14.3624 19.879 13.2453 19.7322 12.1553C19.5073 10.485 18.1239 9.17649 16.4403 9.09909C15.0237 9.03397 13.5847 9 12 9C10.4153 9 8.97627 9.03397 7.55966 9.09909C5.87613 9.17649 4.49269 10.485 4.26781 12.1553C4.12104 13.2453 4 14.3624 4 15.5C4 16.6376 4.12104 17.7547 4.26781 18.8447Z" stroke="currentColor" stroke-width="1.5" />
+                        <path d="M7.5 9V6.5C7.5 4.01472 9.51472 2 12 2C13.9593 2 15.5 3.5 16 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M11.9961 15.5H12.0051" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                    <svg id="medium-decrypt" class="logo" class="increased-security" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="40" height="40" color="#000000" fill="none">
+                        <path d="M4.26781 18.8447C4.49269 20.515 5.87613 21.8235 7.55966 21.9009C8.97627 21.966 10.4153 22 12 22C13.5847 22 15.0237 21.966 16.4403 21.9009C18.1239 21.8235 19.5073 20.515 19.7322 18.8447C19.879 17.7547 20 16.6376 20 15.5C20 14.3624 19.879 13.2453 19.7322 12.1553C19.5073 10.485 18.1239 9.17649 16.4403 9.09909C15.0237 9.03397 13.5847 9 12 9C10.4153 9 8.97627 9.03397 7.55966 9.09909C5.87613 9.17649 4.49269 10.485 4.26781 12.1553C4.12104 13.2453 4 14.3624 4 15.5C4 16.6376 4.12104 17.7547 4.26781 18.8447Z" stroke="currentColor" stroke-width="1.5" />
+                        <path d="M7.5 9V6.5C7.5 4.01472 9.51472 2 12 2C13.9593 2 15.5 3.5 16 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M11.9961 15.5H12.0051" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                    <svg id="hard-decrypt" class="logo" class="increased-security" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="40" height="40" color="#000000" fill="none">
+                        <path d="M4.26781 18.8447C4.49269 20.515 5.87613 21.8235 7.55966 21.9009C8.97627 21.966 10.4153 22 12 22C13.5847 22 15.0237 21.966 16.4403 21.9009C18.1239 21.8235 19.5073 20.515 19.7322 18.8447C19.879 17.7547 20 16.6376 20 15.5C20 14.3624 19.879 13.2453 19.7322 12.1553C19.5073 10.485 18.1239 9.17649 16.4403 9.09909C15.0237 9.03397 13.5847 9 12 9C10.4153 9 8.97627 9.03397 7.55966 9.09909C5.87613 9.17649 4.49269 10.485 4.26781 12.1553C4.12104 13.2453 4 14.3624 4 15.5C4 16.6376 4.12104 17.7547 4.26781 18.8447Z" stroke="currentColor" stroke-width="1.5" />
+                        <path d="M7.5 9V6.5C7.5 4.01472 9.51472 2 12 2C13.9593 2 15.5 3.5 16 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M11.9961 15.5H12.0051" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                    <svg id="black-decrypt" class="black-crypt"  xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 30 30" fill="none">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M12.0001 1.25C12.0001 1.25 11.1615 1.75049 10.9435 1.866C10.5072 2.09717 9.87147 2.41236 9.08289 2.74307C7.50151 3.40629 5.32711 4.12272 2.92549 4.36079L2.25012 4.42774L2.25012 11.0482C2.25012 15.0901 4.69968 18.0067 7.02962 19.8672C8.20185 20.8033 9.37014 21.4945 10.2438 21.9515C10.6815 22.1805 12.0001 22.75 12.0001 22.75C12.0001 22.75 13.3187 22.1805 13.7564 21.9515C14.6301 21.4945 15.7984 20.8033 16.9706 19.8672C19.3006 18.0067 21.7501 15.0901 21.7501 11.0482L21.7501 4.42774L21.0747 4.36079C18.6731 4.12272 16.4987 3.40629 14.9174 2.74307C14.1288 2.41236 13.4931 2.09717 13.0568 1.866C12.8388 1.75049 12.0001 1.25 12.0001 1.25ZM9.25006 9C9.25006 7.48122 10.4813 6.25 12.0001 6.25C13.5188 6.25 14.7501 7.48122 14.7501 9V9.75H16.2501L16.2501 16.75L7.75006 16.75L7.75006 9.75H9.25006V9ZM13.2501 9V9.75L10.7501 9.75V9C10.7501 8.30964 11.3097 7.75 12.0001 7.75C12.6904 7.75 13.2501 8.30964 13.2501 9Z" fill="#141B34"/>
+                    </svg>
+                </div>
+              
+                <p class="nicheheading">Decrypted Key : </p>
+                <input type="text" readonly class="anskey" id="decryptedKey" value="">
+                
+               
+                <br><br>
+                <br> 
+                
+                <svg id="dRefresh" class="refresh" xmlns="http://www.w3.org/2000/svg" width="25px" height="25px" viewBox="0 0 21 21">
+                    <g fill="none" fill-rule="evenodd" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" transform="translate(3 6)">
+                        <path d="m1.378 1.376 4.243.003v4.242" transform="matrix(-.70710678 .70710678 .70710678 .70710678 3.500179 -1.449821)"/> 
+                        <path d="m5.5 9.49998326h5c2 .00089417 3-.99910025 3-2.99998326s-1-3.00088859-3-3.00001674h-10"/> 
+                    </g>
+                </svg>
+            </section>
+        </main>
+
+        <div id="msgdisplay"> <input id="dynamicTextarea" readonly> </div>
+        
+
+        <footer>
+                
+
+                <div id="copyrightInfo">   
+                    <svg id="dark-mode" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" class="injected-svg" data-src="https://cdn.hugeicons.com/icons/moon-fast-wind-solid-sharp.svg" xmlns:xlink="http://www.w3.org/1999/xlink" role="img" color="#000000">
+                        <path d="M11.2072 13C10.6549 13 10.2072 13.4477 10.2072 14H8.20721C8.20721 12.3431 9.55036 11 11.2072 11C12.8641 11 14.2072 12.3431 14.2072 14C14.2072 14.5448 14.0611 15.0584 13.8053 15.5007C13.3701 16.2529 12.5643 16.834 11.6896 17.2421C10.7892 17.6623 9.6977 17.9553 8.54097 18.0585C6.23822 18.264 3.5178 17.7248 1.50011 15.7071L2.91432 14.2929C4.39663 15.7752 6.46395 16.236 8.36319 16.0665C9.30745 15.9822 10.1705 15.7439 10.844 15.4297C11.5432 15.1035 11.9307 14.7471 12.074 14.4993C12.1585 14.3532 12.2072 14.1838 12.2072 14C12.2072 13.4477 11.7595 13 11.2072 13Z" fill="#000000"></path>
+                        <path d="M14.4527 19.069C14.5265 19.0252 14.6123 19 14.7067 19C14.9828 19 15.2067 19.2239 15.2067 19.5C15.2067 19.7761 14.9828 20 14.7067 20C14.6464 20 14.5908 19.9898 14.5399 19.9718L13.8734 21.8575C14.1354 21.9501 14.4163 22 14.7067 22C16.0874 22 17.2067 20.8807 17.2067 19.5C17.2067 18.1193 16.0874 17 14.7067 17C14.2181 17 13.7594 17.1412 13.3728 17.3854C13.3616 17.3924 13.3505 17.3997 13.3397 17.4072C12.3033 18.1208 10.3287 19.0644 8.09848 19.3069L8.31467 21.2952C10.9118 21.0128 13.1855 19.9362 14.4527 19.069Z" fill="#000000"></path>
+                        <path d="M3.62788 18.6409C4.20948 18.9111 4.80243 19.0964 5.39733 19.212L5.01582 21.1753C4.27122 21.0306 3.52246 20.7972 2.78526 20.4547L3.62788 18.6409Z" fill="#000000"></path>
+                        <path d="M19.2073 21.0007C19.6522 21.0007 20.4887 20.8279 21.5845 20.3815L20.8301 18.5293C20.3487 18.7254 19.9593 18.8461 19.673 18.9166C19.5298 18.9519 19.4159 18.9739 19.332 18.9866C19.2521 18.9987 19.2129 19.0004 19.2077 19.0006L19.2073 21.0007Z" fill="#000000"></path>
+                        <path d="M16.2235 9.11126C14.91 6.87928 15.1665 4.1807 16.6568 2.2463C14.6702 1.75234 12.493 1.98823 10.578 3.07295C7.80724 4.64236 6.33067 7.56635 6.51561 10.5C6.55961 11.198 6.70996 11.8825 6.95055 12.5372C7.55768 10.77 9.23425 9.5 11.2074 9.5C13.6927 9.5 15.7074 11.5147 15.7074 14C15.7074 14.5477 15.6086 15.0757 15.4272 15.5647C16.5277 15.7648 17.4712 16.4152 18.0599 17.3181C18.7353 16.9932 19.4022 16.558 20.0484 16C21.2477 14.9645 22.082 13.6272 22.5001 12.1756C20.0474 12.4746 17.537 11.3432 16.2235 9.11126Z" fill="#000000"></path>
+                    </svg>
+                    <div class="infooooo" id="name"> - Meet Soni </div>
+                    
+                    <svg class="infooooo" width="24" height="24" viewBox="0 0 24 24" fill="none" width="25" height="25" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M6.5 9.5H2V22H6.5V9.5Z" stroke="#141B34" stroke-width="1.5" stroke-linejoin="round"/>
+                        <path d="M6.5 4.25C6.5 5.49264 5.49264 6.5 4.25 6.5C3.00736 6.5 2 5.49264 2 4.25C2 3.00736 3.00736 2 4.25 2C5.49264 2 6.5 3.00736 6.5 4.25Z" stroke="#141B34" stroke-width="1.5" stroke-linejoin="round"/>
+                        <path d="M14.0001 9.5H9.5V22H14.0001V15.7502C14.0001 14.7837 14.7835 14.0002 15.75 14.0002C16.7165 14.0002 17.5 14.7837 17.5 15.7502V22H21.9987L22.0001 14.0002C22.0001 11.515 19.6364 9.50024 17.2968 9.50024C15.9649 9.50024 14.7767 10.1531 14.0001 11.174V9.5Z" stroke="#141B34" stroke-width="1.5" stroke-linejoin="round"/>
+                    </svg>
+            
+                    
+                    <svg class="infooooo" width="24" height="24" viewBox="0 0 24 24"  width="25" height="25"  xmlns="http://www.w3.org/2000/svg" color="0000" fill="none">
+                        <path d="M2 17.4883C3.63025 20.8809 6.29407 22.0938 9.5 21.2093"  stroke-width="1.5" stroke-linejoin="round"/>
+                        <path d="M9.99723 22.4883V19.0603C9.99723 18.699 10.0955 18.3444 10.2815 18.0344L10.8219 17.1339C10.8551 17.0787 10.8271 17.0067 10.7657 16.9869C7.18162 15.8268 5.18431 14.0972 5.00412 10.5267C4.94874 9.43207 5.45528 8.08972 6.28691 6.52137C6.04107 5.06359 6.01086 4.18563 6.27119 2.59238C6.27982 2.53957 6.32942 2.50265 6.38259 2.50949C8.04565 2.72328 8.96486 3.02745 10.1412 3.9545C12.3781 3.40487 14.2365 3.30181 16.8404 3.96595C17.6195 3.26718 18.7264 2.73505 20.533 2.48919C20.5826 2.48244 20.63 2.51394 20.6427 2.56227C20.9851 3.86245 21.0088 4.72539 20.6775 6.47962C21.3027 7.41285 22.0541 8.91864 21.9962 10.5266C21.7586 14.1003 20.1494 15.6605 16.2325 16.9843C16.1707 17.0052 16.1436 17.0791 16.1788 17.1339C16.4048 17.4861 16.5661 17.7474 16.7639 18.1155C16.9119 18.3907 16.9832 18.7001 16.9832 19.0125V22.4883" stroke="#141B34" stroke-width="1.5"/>
+                    </svg>
+            
+                    <svg class="infooooo" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="25" height="25" viewBox="0 0 50 50" fill="">
+                        <path fill-rule="evenodd" d="M 40.925781 1.890625 L 37.859375 2.417969 L 41.1875 20.625 L 44.03125 20.253906 Z M 29.96875 6.351563 L 27.101563 8.078125 L 37.300781 23.035156 L 39.820313 21.480469 Z M 20.796875 15.03125 L 19.113281 17.703125 L 34.5 27 L 35.902344 24.578125 Z M 16.375 24.402344 L 15.628906 27.402344 L 33.359375 31.894531 L 33.640625 29.203125 Z M 9 29 L 9 47.984375 L 38.902344 48 L 38.902344 47.984375 C 38.933594 47.984375 39 29 39 29 L 36 29 L 36 45 L 12 45 L 12 29 Z M 15.152344 32.355469 L 14.902344 35.339844 L 33 37 L 33.203125 34.5 Z M 14.902344 39 L 15 42 L 33 41.929688 L 33 39 Z"></path>
+                    </svg>
+            
+                    <svg class="infooooo" xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24" fill="none" class="injected-svg" data-src="https://cdn.hugeicons.com/icons/leetcode-bulk-rounded.svg" xmlns:xlink="http://www.w3.org/1999/xlink" role="img" color="#000000">
+                        <path d="M14.5499 3.71568C14.9451 3.32994 14.9528 2.69683 14.5671 2.30157C14.1814 1.90631 13.5483 1.89859 13.153 2.28432L3.93078 11.2843C2.68974 12.4955 2.68974 14.4694 3.93078 15.6806L9.4857 21.1016C10.7131 22.2995 12.6932 22.2995 13.9206 21.1016L16.6981 18.3911C17.0934 18.0054 17.1011 17.3722 16.7154 16.977C16.3296 16.5817 15.6965 16.574 15.3012 16.9597L12.5238 19.6703C12.0733 20.1099 11.333 20.1099 10.8826 19.6703L5.32764 14.2492C4.89079 13.8229 4.89079 13.142 5.32764 12.7157L10.9036 7.27409C11.3558 6.85504 12.0799 6.86187 12.5233 7.29457L15.3007 10.0051C15.696 10.3908 16.3291 10.3831 16.7148 9.98786C17.1006 9.5926 17.0929 8.95948 16.6976 8.57375L13.9201 5.86321C13.6434 5.59313 13.3284 5.38395 12.9923 5.23566L14.5499 3.71568Z" fill="#000000"></path>
+                        <path opacity="0.4" fill-rule="evenodd" clip-rule="evenodd" d="M10 13C10 12.4477 10.4477 12 11 12H20C20.5523 12 21 12.4477 21 13C21 13.5523 20.5523 14 20 14H11C10.4477 14 10 13.5523 10 13Z" fill="#000000"></path>
+                    </svg>
+                    <svg class="infooooo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"  fill="none">
+                        <path d="M3 21L10.5484 13.4516M21 3L13.4516 10.5484M13.4516 10.5484L8 3H3L10.5484 13.4516M13.4516 10.5484L21 21H16L10.5484 13.4516" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>  
+                    <svg class="infooooo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none">
+                        <ellipse cx="12" cy="15.5" rx="9" ry="6.5" stroke="currentColor" stroke-width="1.5" />
+                        <path d="M15.5 16.7803C14.5149 17.548 13.3062 18.0002 12 18.0002C10.6938 18.0002 9.48512 17.548 8.5 16.7803" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                        <circle cx="19" cy="4" r="2" stroke="currentColor" stroke-width="1.5" />
+                        <path d="M18 10.0694C18.3687 9.43053 19.0634 9 19.8595 9C21.0417 9 22 9.94921 22 11.1201C22 11.937 21.5336 12.6459 20.8502 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                        <path d="M6 10.0694C5.63125 9.43053 4.93663 9 4.14048 9C2.95833 9 2 9.94921 2 11.1201C2 11.937 2.4664 12.6459 3.14981 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                        <path d="M17 4C14.643 4 13.4645 4 12.7322 4.73223C12 5.46447 12 6.64298 12 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M9.00801 13L8.99902 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M15.008 13L14.999 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                    <svg class="infooooo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" color="#000000" fill="none">
+                        <path d="M2.5 12C2.5 7.52166 2.5 5.28249 3.89124 3.89124C5.28249 2.5 7.52166 2.5 12 2.5C16.4783 2.5 18.7175 2.5 20.1088 3.89124C21.5 5.28249 21.5 7.52166 21.5 12C21.5 16.4783 21.5 18.7175 20.1088 20.1088C18.7175 21.5 16.4783 21.5 12 21.5C7.52166 21.5 5.28249 21.5 3.89124 20.1088C2.5 18.7175 2.5 16.4783 2.5 12Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
+                        <path d="M16.5 12C16.5 14.4853 14.4853 16.5 12 16.5C9.51472 16.5 7.5 14.4853 7.5 12C7.5 9.51472 9.51472 7.5 12 7.5C14.4853 7.5 16.5 9.51472 16.5 12Z" stroke="currentColor" stroke-width="1.5" />
+                        <path d="M17.5078 6.5L17.4988 6.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                            
+                    <svg class="infooooo" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 20.5C13.8097 20.5 15.5451 20.3212 17.1534 19.9934C19.1623 19.5839 20.1668 19.3791 21.0834 18.2006C22 17.0221 22 15.6693 22 12.9635V11.0365C22 8.33073 22 6.97787 21.0834 5.79937C20.1668 4.62088 19.1623 4.41613 17.1534 4.00662C15.5451 3.67877 13.8097 3.5 12 3.5C10.1903 3.5 8.45489 3.67877 6.84656 4.00662C4.83766 4.41613 3.83321 4.62088 2.9166 5.79937C2 6.97787 2 8.33073 2 11.0365V12.9635C2 15.6693 2 17.0221 2.9166 18.2006C3.83321 19.3791 4.83766 19.5839 6.84656 19.9934C8.45489 20.3212 10.1903 20.5 12 20.5Z" stroke="#141B34" stroke-width="1.5"/>
+                        <path opacity="0.4" d="M15.9621 12.3129C15.8137 12.9187 15.0241 13.3538 13.4449 14.2241C11.7272 15.1705 10.8684 15.6438 10.1728 15.4615C9.9372 15.3997 9.7202 15.2911 9.53799 15.1438C9 14.7089 9 13.8059 9 12C9 10.1941 9 9.29112 9.53799 8.85618C9.7202 8.70886 9.9372 8.60029 10.1728 8.53854C10.8684 8.35621 11.7272 8.82945 13.4449 9.77593C15.0241 10.6462 15.8137 11.0813 15.9621 11.6871C16.0126 11.8933 16.0126 12.1067 15.9621 12.3129Z" stroke="#141B34" stroke-width="1.5" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+        </footer>
+    </body>
+</html>

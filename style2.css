@@ -1,0 +1,268 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Courier New', Courier, monospace;
+}
+:root{
+    --white: rgb(255, 255, 255);
+    --black : rgb(0,0,0);
+    --heading : rgb(54, 241, 179);
+    --hoverblack : rgba(0, 0, 0, 0.2);
+    --heads : #333;
+    --underheads : #555;
+    --input: #ddd;
+    --easy : rgb(54, 241, 179);
+    --medium: rgb(255, 102, 1);
+    --hard: rgb(209, 0, 0);
+    --textarea : rgb(24, 198, 242);
+    --wanna : #002999;
+}
+/* Buttons Section */
+#buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.crypter {
+    border: none;
+    background-color: var(--heading);
+    margin: 10px 95px 0px;
+    font-weight: bolder;
+    padding: 12px 30px;
+    border-radius: 30px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: transform 0.2s ease-in, box-shadow 0.3s ease;
+}
+
+.crypter:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 15px var(--hoverblack);
+    
+}
+
+/* Main Section */
+.kaam {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    padding: 30px;
+    background-color: var(--white);
+    border-radius: 20px;
+    /* box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); */
+}
+
+/* Encryption & Decryption Sections */
+.encryption, .decryption {
+    border: 2px solid var(--hoverblack);
+    border-radius: 20px;
+    padding: 20px;
+    width: 300px;
+    background-color: var(--white);
+    transition: box-shadow 0.3s ease;
+}
+
+.encryption:hover, .decryption:hover {
+    box-shadow: 0 5px 20px var(--hoverblack);
+}
+
+/* Headings */
+.heading {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 900;
+    margin-bottom: 20px;
+    color: var(--heads);
+}
+
+/* Labels */
+.enterkey, .nicheheading {
+    padding-left: 10px;
+    font-weight: 700;
+    color: var(--underheads);
+}
+
+/* Input Fields */
+.enteredKey, .anskey {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 2px solid var(--input);
+    border-radius: 30px;
+    font-weight: 700;
+    font-size: 1rem;
+    transition: border 0.2s ease;
+}
+
+.enteredKey:focus, .anskey:focus {
+    border: 2px solid var(--easy);
+    outline: none;
+}
+
+/* Icons (SVG Logos) */
+.logo {
+    text-align: center;
+    margin: 20px auto;
+    height: 40px;
+    width: 40px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.logo:hover {
+    transform: scale(1.1);
+}
+
+#easy-encrypt, #easy-decrypt{
+    box-shadow: 0 0px 10px var(--easy);
+}
+#easy-encrypt:hover, #easy-decrypt:hover{
+    box-shadow: 0 8px 10px var(--easy);
+}
+
+#medium-encrypt, #medium-decrypt{
+    box-shadow: 0 0px 10px var(--medium);
+}
+#medium-encrypt:hover , #medium-decrypt:hover{
+    box-shadow: 0 8px 10px var(--medium);
+}
+
+#hard-encrypt, #hard-decrypt{
+    box-shadow: 0 0px 10px var(--hard);
+}
+#hard-encrypt:hover, #hard-decrypt:hover{
+    box-shadow: 0 8px 10px var(--hard);
+}
+
+#medium-encrypt, #medium-decrypt, #hard-encrypt, #hard-decrypt,#black-encrypt,  #black-decrypt{
+    display:none;
+}
+/* Centering Content */
+.ha {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.refresh{
+    float: right;
+    transition: .3s;
+}
+.refresh:hover{
+    scale: 1.5;
+}
+
+.sender{
+    transition: .3s;
+}
+.sender:hover{
+    scale: 1.5;
+}
+
+#dynamicTextarea{
+    display:none;
+    box-sizing: content-box; /* Ensure the width is based on the content only */
+    width:800px;
+    padding: 6px 10px 6px;
+    border-radius: 20px;
+    border: 1px solid var(--textarea);
+    margin:15px 0px;
+}
+#msgdisplay{
+    display: flex;
+    justify-content: center;
+}
+
+#wanna{
+    font-size: 12px;
+    margin:0px 10px 15px;
+    font-weight: 800;
+    border: none;
+    background-color: inherit;
+}
+#wanna:hover{
+    color: var(--wanna);
+}
+
+.security-level{
+    display:flex;
+    justify-content: center;
+    text-align: center;
+    display:none;
+    margin-top: 15px;
+    transition: 1s;
+}
+#allbuttons{
+    margin:0px;
+    margin-top: 15px;
+    display:none;
+}
+/* .security-level button{
+    margin: 5px 5px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #1885f2;
+    border: none;
+    color: white;
+    transition: .4s;
+}
+.security-level button:hover{
+    scale: 1.3;
+    background-color: #002999;
+}
+.security-level button:focus{
+    scale: 1.3;
+    background-color: #002999;
+} */
+
+#dark-mode{
+    float: left;
+    border: 1px solid var(--black);
+    border-radius: 10px;
+    transition: .5s;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 20px;;
+    margin-left: 20px;
+}
+#dark-mode:hover{
+    scale: 1.4;
+}
+
+footer{
+    margin:30px;
+    bottom:0px;  /*imp*/
+    width:100%; /*imp*/
+    position:absolute;/*imp*/
+}
+
+
+#copyrightInfo {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap; /* To ensure the SVGs stay within bounds */
+}
+#copyrightInfo svg{
+    margin: 10px 7px;
+    transition: .3s
+}
+#copyrightInfo svg:hover{
+    scale: 1.3;
+    cursor: pointer;
+}
+
+#name {
+    color: var(--black);
+    font-weight: 900;
+    margin-right: 15px; /* Add some spacing between name and SVG icons */
+    font-size: 20px; /* Adjust font size if needed */
+    font-family: 'Courier New', Courier, monospace;
+}
