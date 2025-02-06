@@ -166,7 +166,7 @@ document.addEventListener("DOMContentLoaded", () => {
         return key;
     }
     function hardDecryptKar(val) {
-       let text = " decry isn't allowed ";
+       const text = " decry isn't allowed ";
        return text
     }
 
